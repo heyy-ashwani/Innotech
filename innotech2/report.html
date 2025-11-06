@@ -1,0 +1,401 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Report Missing Person - BACK HOME</title>
+    <link rel="stylesheet" href="report.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <header>
+        <div class="container">
+            <div class="logo">
+                <h1>BACK HOME</h1>
+                <p>Report Share Unite</p>
+            </div>
+            <nav>
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="report.html" class="active">Report Missing</a></li>
+                    <li><a href="search.html">Search</a></li>
+                    <li><a href="index.html#about">About</a></li>
+                    <li><a href="index.html#contact">Contact</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <section class="page-header">
+        <div class="container">
+            <h1>Report a Missing Person</h1>
+            <p>Fill out the form below to file a missing person report</p>
+        </div>
+    </section>
+
+    <section class="report-form">
+        <div class="container">
+            <div class="form-container">
+                <form id="missingPersonForm">
+                    <div class="form-section">
+                        <h2><i class="fas fa-user"></i> Reporter Information</h2>
+                        <div class="form-group">
+                            <label for="reporterName">Your Full Name</label>
+                            <input type="text" id="reporterName" name="reporterName" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="reporterPhone">Phone Number</label>
+                            <div class="phone-verification">
+                                <input type="tel" id="reporterPhone" name="reporterPhone" required>
+                                <button type="button" id="verifyPhoneBtn">Verify OTP</button>
+                            </div>
+                            <div id="otpSection" class="otp-section" style="display: none;">
+                                <input type="text" placeholder="Enter OTP" id="otpInput">
+                                <button type="button" id="submitOtpBtn">Submit</button>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="reporterAadhaar">Aadhaar Number</label>
+                            <div class="aadhaar-verification">
+                                <input type="text" id="reporterAadhaar" name="reporterAadhaar" placeholder="XXXX XXXX XXXX" maxlength="14" required>
+                                <button type="button" id="verifyAadhaarBtn">Verify</button>
+                            </div>
+                            <div id="aadhaarOtpSection" class="otp-section" style="display: none;">
+                                <input type="text" placeholder="Enter Aadhaar OTP" id="aadhaarOtpInput">
+                                <button type="button" id="submitAadhaarOtpBtn">Submit</button>
+                            </div>
+                            <p class="form-help">Your Aadhaar details will be used for verification purposes only and will not be shared.</p>
+                        </div>
+                        <div class="form-group">
+                            <label for="relationToMissing">Your Relation to Missing Person</label>
+                            <select id="relationToMissing" name="relationToMissing" required>
+                                <option value="">Select Relation</option>
+                                <option value="parent">Parent</option>
+                                <option value="sibling">Sibling</option>
+                                <option value="spouse">Spouse</option>
+                                <option value="child">Child</option>
+                                <option value="other">Other</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="form-section">
+                        <h2><i class="fas fa-user-friends"></i> Missing Person Information</h2>
+                        <div class="form-group">
+                            <label for="missingName">Full Name</label>
+                            <input type="text" id="missingName" name="missingName" required>
+                        </div>
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="missingAge">Age</label>
+                                <input type="number" id="missingAge" name="missingAge" min="1" max="120" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="missingGender">Gender</label>
+                                <select id="missingGender" name="missingGender" required>
+                                    <option value="">Select Gender</option>
+                                    <option value="male">Male</option>
+                                    <option value="female">Female</option>
+                                    <option value="other">Other</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="lastSeen">Last Seen Location</label>
+                            <div class="location-input">
+                                <input type="text" id="lastSeen" name="lastSeen" placeholder="Enter address or location" required>
+                                <button type="button" id="mapBtn"><i class="fas fa-map-marker-alt"></i> Use Map</button>
+                            </div>
+                            <div id="mapContainer" class="map-container" style="display: none;">
+                                <div class="map-placeholder">
+                                    <img src="map.jpeg" alt="Map">
+                                    <p>Click on the map to pinpoint the last seen location</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="lastSeenDate">Date Last Seen</label>
+                            <input type="date" id="lastSeenDate" name="lastSeenDate" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="clothingDescription">Clothing Description</label>
+                            <textarea id="clothingDescription" name="clothingDescription" rows="3" placeholder="Describe what the person was wearing when last seen"></textarea>
+                        </div>
+                        <div class="form-group">
+                            <label for="medicalCondition">Medical Conditions or Disabilities</label>
+                            <textarea id="medicalCondition" name="medicalCondition" rows="3" placeholder="Any relevant medical information, disabilities, or special needs"></textarea>
+                        </div>
+                        <div class="form-group">
+                            <label for="additionalInfo">Additional Information</label>
+                            <textarea id="additionalInfo" name="additionalInfo" rows="3" placeholder="Any other details that might help in the search"></textarea>
+                        </div>
+                    </div>
+
+                    <div class="form-section">
+                        <h2><i class="fas fa-camera"></i> Photos</h2>
+                        <div class="photo-upload">
+                            <div class="upload-container">
+                                <div class="upload-box" id="uploadBox1">
+                                    <i class="fas fa-cloud-upload-alt"></i>
+                                    <p>Upload Photo 1 (Frontal face required)</p>
+                                    <input type="file" id="photo1" name="photo1" accept="image/*" required>
+                                </div>
+                                <div class="upload-box" id="uploadBox2">
+                                    <i class="fas fa-cloud-upload-alt"></i>
+                                    <p>Upload Photo 2 (Optional)</p>
+                                    <input type="file" id="photo2" name="photo2" accept="image/*">
+                                </div>
+                                <div class="upload-box" id="uploadBox3">
+                                    <i class="fas fa-cloud-upload-alt"></i>
+                                    <p>Upload Photo 3 (Optional)</p>
+                                    <input type="file" id="photo3" name="photo3" accept="image/*">
+                                </div>
+                            </div>
+                            <p class="photo-note">Note: At least one clear frontal face photo is required. Recommended to upload 2-3 photos.</p>
+                        </div>
+                    </div>
+
+                    <div class="form-section">
+                        <h2><i class="fas fa-shield-alt"></i> Verification & Consent</h2>
+                        <div class="consent-box">
+                            <div class="form-group checkbox-group">
+                                <input type="checkbox" id="consent" name="consent" required>
+                                <label for="consent">I confirm that all details provided are true to the best of my knowledge. I understand that false reporting may lead to legal action.</label>
+                            </div>
+                            <div class="form-group checkbox-group">
+                                <input type="checkbox" id="dataConsent" name="dataConsent" required>
+                                <label for="dataConsent">I consent to the use of this information and photos for the purpose of finding the missing person.</label>
+                            </div>
+                            <div class="form-group checkbox-group">
+                                <input type="checkbox" id="contactConsent" name="contactConsent" required>
+                                <label for="contactConsent">I consent to be contacted by police, NGOs, or volunteers regarding this case.</label>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-actions">
+                        <button type="button" id="generatePosterBtn" class="btn secondary">Generate Preview</button>
+                        <button type="submit" class="btn primary">Submit Report</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <div id="posterPreviewModal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <h2>Poster Preview</h2>
+            <div class="poster-preview">
+                <div class="poster">
+                    <div class="poster-header">
+                        <h3>MISSING PERSON</h3>
+                    </div>
+                    <div class="poster-body">
+                        <div class="poster-photo">
+                            <img src="https://via.placeholder.com/200x200?text=Photo" alt="Missing person photo">
+                        </div>
+                        <div class="poster-details">
+                            <h4 id="previewName">Name: [Name]</h4>
+                            <p id="previewAge">Age: [Age]</p>
+                            <p id="previewGender">Gender: [Gender]</p>
+                            <p id="previewLastSeen">Last Seen: [Location]</p>
+                            <p id="previewDate">Date: [Date]</p>
+                            <p id="previewClothing">Clothing: [Description]</p>
+                        </div>
+                    </div>
+                    <div class="poster-footer">
+                        <div class="qr-code">
+                            <img src="https://via.placeholder.com/100x100?text=QR+Code" alt="QR Code">
+                        </div>
+                        <div class="contact-info">
+                            <p>If found, please contact:</p>
+                            <p id="previewContact">[Contact Number]</p>
+                            <p>Police: 100 | NGO: [NGO Number]</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-actions">
+                <button type="button" id="downloadPosterBtn" class="btn primary">Download Poster</button>
+                <button type="button" id="closePreviewBtn" class="btn secondary">Close Preview</button>
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        <div class="container">
+            <div class="copyright">
+                <p>&copy; 2023 BACK HOME. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Format Aadhaar number input
+        document.getElementById('reporterAadhaar').addEventListener('input', function() {
+            let value = this.value.replace(/\D/g, '');
+            let formattedValue = value.replace(/(\d{4})(\d{4})(\d{0,4})/, '$1 $2 $3');
+            this.value = formattedValue;
+        });
+
+        // Phone OTP Verification
+        document.getElementById('verifyPhoneBtn').addEventListener('click', function() {
+            const phone = document.getElementById('reporterPhone').value;
+            if (phone.length < 10) {
+                alert('Please enter a valid phone number');
+                return;
+            }
+            document.getElementById('otpSection').style.display = 'block';
+            // In a real application, this would send an OTP to the phone number
+        });
+
+        document.getElementById('submitOtpBtn').addEventListener('click', function() {
+            const otp = document.getElementById('otpInput').value;
+            if (otp === '123456') { // For demo purposes
+                alert('Phone number verified successfully!');
+                document.getElementById('otpSection').style.display = 'none';
+                document.getElementById('verifyPhoneBtn').textContent = 'Verified';
+                document.getElementById('verifyPhoneBtn').disabled = true;
+                document.getElementById('verifyPhoneBtn').classList.add('verified');
+            } else {
+                alert('Invalid OTP. Please try again.');
+            }
+        });
+
+        // Aadhaar OTP Verification
+        document.getElementById('verifyAadhaarBtn').addEventListener('click', function() {
+            const aadhaar = document.getElementById('reporterAadhaar').value.replace(/\s/g, '');
+            if (aadhaar.length !== 12) {
+                alert('Please enter a valid 12-digit Aadhaar number');
+                return;
+            }
+            document.getElementById('aadhaarOtpSection').style.display = 'block';
+            // In a real application, this would send an OTP to the registered mobile number
+        });
+
+        document.getElementById('submitAadhaarOtpBtn').addEventListener('click', function() {
+            const otp = document.getElementById('aadhaarOtpInput').value;
+            if (otp === '123456') { // For demo purposes
+                alert('Aadhaar verified successfully!');
+                document.getElementById('aadhaarOtpSection').style.display = 'none';
+                document.getElementById('verifyAadhaarBtn').textContent = 'Verified';
+                document.getElementById('verifyAadhaarBtn').disabled = true;
+                document.getElementById('verifyAadhaarBtn').classList.add('verified');
+            } else {
+                alert('Invalid OTP. Please try again.');
+            }
+        });
+
+        // Map functionality
+        document.getElementById('mapBtn').addEventListener('click', function() {
+            const mapContainer = document.getElementById('mapContainer');
+            if (mapContainer.style.display === 'none') {
+                mapContainer.style.display = 'block';
+            } else {
+                mapContainer.style.display = 'none';
+            }
+        });
+
+        // Photo upload preview
+        document.getElementById('photo1').addEventListener('change', function() {
+            previewPhoto(this, 'uploadBox1');
+        });
+
+        document.getElementById('photo2').addEventListener('change', function() {
+            previewPhoto(this, 'uploadBox2');
+        });
+
+        document.getElementById('photo3').addEventListener('change', function() {
+            previewPhoto(this, 'uploadBox3');
+        });
+
+        function previewPhoto(input, boxId) {
+            if (input.files && input.files[0]) {
+                const reader = new FileReader();
+                reader.onload = function(e) {
+                    const box = document.getElementById(boxId);
+                    box.style.backgroundImage = `url(${e.target.result})`;
+                    box.style.backgroundSize = 'cover';
+                    box.style.backgroundPosition = 'center';
+                    box.innerHTML = '';
+                }
+                reader.readAsDataURL(input.files[0]);
+            }
+        }
+
+        // Generate Poster Preview
+        document.getElementById('generatePosterBtn').addEventListener('click', function() {
+            // Check if phone and Aadhaar are verified
+            const phoneVerified = document.getElementById('verifyPhoneBtn').classList.contains('verified');
+            const aadhaarVerified = document.getElementById('verifyAadhaarBtn').classList.contains('verified');
+            
+            if (!phoneVerified || !aadhaarVerified) {
+                alert('Please verify your phone number and Aadhaar before generating the poster.');
+                return;
+            }
+            
+            // Get form values
+            const name = document.getElementById('missingName').value || '[Name]';
+            const age = document.getElementById('missingAge').value || '[Age]';
+            const gender = document.getElementById('missingGender').value || '[Gender]';
+            const lastSeen = document.getElementById('lastSeen').value || '[Location]';
+            const lastSeenDate = document.getElementById('lastSeenDate').value || '[Date]';
+            const clothing = document.getElementById('clothingDescription').value || '[Description]';
+            const contact = document.getElementById('reporterPhone').value || '[Contact Number]';
+
+            // Update preview
+            document.getElementById('previewName').textContent = `Name: ${name}`;
+            document.getElementById('previewAge').textContent = `Age: ${age}`;
+            document.getElementById('previewGender').textContent = `Gender: ${gender}`;
+            document.getElementById('previewLastSeen').textContent = `Last Seen: ${lastSeen}`;
+            document.getElementById('previewDate').textContent = `Date: ${lastSeenDate}`;
+            document.getElementById('previewClothing').textContent = `Clothing: ${clothing}`;
+            document.getElementById('previewContact').textContent = contact;
+
+            // Show modal
+            document.getElementById('posterPreviewModal').style.display = 'block';
+        });
+
+        // Close modal
+        document.querySelector('.close').addEventListener('click', function() {
+            document.getElementById('posterPreviewModal').style.display = 'none';
+        });
+
+        document.getElementById('closePreviewBtn').addEventListener('click', function() {
+            document.getElementById('posterPreviewModal').style.display = 'none';
+        });
+
+        // Download poster
+        document.getElementById('downloadPosterBtn').addEventListener('click', function() {
+            alert('Poster downloaded successfully! In a real application, this would download the poster as a PDF or image.');
+        });
+
+        // Form submission
+        document.getElementById('missingPersonForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            // Check if all required fields are filled
+            if (!document.getElementById('consent').checked || 
+                !document.getElementById('dataConsent').checked || 
+                !document.getElementById('contactConsent').checked) {
+                alert('Please accept all consent checkboxes to submit the report.');
+                return;
+            }
+            
+            // Check if phone and Aadhaar are verified
+            const phoneVerified = document.getElementById('verifyPhoneBtn').classList.contains('verified');
+            const aadhaarVerified = document.getElementById('verifyAadhaarBtn').classList.contains('verified');
+            
+            if (!phoneVerified || !aadhaarVerified) {
+                alert('Please verify your phone number and Aadhaar before submitting the report.');
+                return;
+            }
+
+            // In a real application, this would submit the form data to a server
+            alert('Report submitted successfully! Redirecting to poster page...');
+            window.location.href = 'poster.html';
+        });
+    </script>
+</body>
+</html>

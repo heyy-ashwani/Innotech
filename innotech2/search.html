@@ -1,0 +1,354 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Search Missing Persons - BACK HOME</title>
+    <link rel="stylesheet" href="search.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <header>
+        <div class="container">
+            <div class="logo">
+                <h1>BACK HOME</h1>
+                <p>Report Share Unite</p>
+            </div>
+            <nav>
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="report.html">Report Missing</a></li>
+                    <li><a href="search.html" class="active">Search</a></li>
+                    <li><a href="index.html#about">About</a></li>
+                    <li><a href="index.html#contact">Contact</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <section class="page-header">
+        <div class="container">
+            <h1>Search Missing Persons</h1>
+            <p>Upload a photo or use your camera to check if someone matches a missing person report</p>
+        </div>
+    </section>
+
+    <section class="search-section">
+        <div class="container">
+            <div class="search-container">
+                <div class="search-methods">
+                    <div class="method-tabs">
+                        <button class="tab-btn active" data-tab="upload">Upload Photo</button>
+                        <button class="tab-btn" data-tab="camera">Use Camera</button>
+                        <button class="tab-btn" data-tab="manual">Manual Search</button>
+                    </div>
+
+                    <div class="tab-content active" id="upload">
+                        <div class="upload-area">
+                            <div class="upload-box" id="uploadBox">
+                                <i class="fas fa-cloud-upload-alt"></i>
+                                <p>Drag & drop a photo here or click to browse</p>
+                                <input type="file" id="photoUpload" accept="image/*">
+                            </div>
+                            <div class="upload-instructions">
+                                <h3>Photo Guidelines</h3>
+                                <ul>
+                                    <li>Use a clear, recent photo of the person</li>
+                                    <li>Frontal face photos work best</li>
+                                    <li>Ensure good lighting and focus</li>
+                                    <li>Avoid group photos if possible</li>
+                                </ul>
+                            </div>
+                        </div>
+                        <button class="btn primary" id="searchUploadBtn">Search</button>
+                    </div>
+
+                    <div class="tab-content" id="camera">
+                        <div class="camera-container">
+                            <div class="camera-view">
+                                <img src="https://via.placeholder.com/640x480?text=Camera+View" alt="Camera view">
+                                <div class="camera-overlay">
+                                    <div class="face-frame"></div>
+                                </div>
+                            </div>
+                            <div class="camera-controls">
+                                <button class="btn primary" id="captureBtn">Capture Photo</button>
+                                <button class="btn secondary" id="switchCameraBtn">Switch Camera</button>
+                            </div>
+                        </div>
+                        <button class="btn primary" id="searchCameraBtn">Search</button>
+                    </div>
+
+                    <div class="tab-content" id="manual">
+                        <div class="manual-search">
+                            <div class="form-group">
+                                <label for="searchName">Name</label>
+                                <input type="text" id="searchName" placeholder="Enter name">
+                            </div>
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <label for="searchAge">Age Range</label>
+                                    <select id="searchAge">
+                                        <option value="">Select Age Range</option>
+                                        <option value="0-12">0-12 years</option>
+                                        <option value="13-18">13-18 years</option>
+                                        <option value="19-30">19-30 years</option>
+                                        <option value="31-50">31-50 years</option>
+                                        <option value="51+">51+ years</option>
+                                    </select>
+                                </div>
+                                <div class="form-group">
+                                    <label for="searchGender">Gender</label>
+                                    <select id="searchGender">
+                                        <option value="">Select Gender</option>
+                                        <option value="male">Male</option>
+                                        <option value="female">Female</option>
+                                        <option value="other">Other</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="searchLocation">Location</label>
+                                <input type="text" id="searchLocation" placeholder="Enter city or area">
+                            </div>
+                            <div class="form-group">
+                                <label for="searchDate">Date Range</label>
+                                <div class="date-range">
+                                    <input type="date" id="dateFrom">
+                                    <span>to</span>
+                                    <input type="date" id="dateTo">
+                                </div>
+                            </div>
+                        </div>
+                        <button class="btn primary" id="searchManualBtn">Search</button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="search-results" id="searchResults" style="display: none;">
+                <h2>Search Results</h2>
+                <div class="results-summary">
+                    <p>Found <span id="resultCount">3</span> possible matches</p>
+                </div>
+                
+                <div class="results-grid">
+                    <div class="result-card">
+                        <div class="result-photo">
+                            <img src="https://via.placeholder.com/150x150?text=Photo" alt="Missing person">
+                        </div>
+                        <div class="result-details">
+                            <h3>Rahul Sharma</h3>
+                            <p><i class="fas fa-user"></i> 12 years, Male</p>
+                            <p><i class="fas fa-map-marker-alt"></i> Sungam Vihar, Delhi</p>
+                            <p><i class="fas fa-calendar"></i> Missing since Oct 15, 2023</p>
+                            <div class="match-percentage">
+                                <span>92% Match</span>
+                                <div class="progress-bar">
+                                    <div class="progress" style="width: 92%"></div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="result-actions">
+                            <button class="btn primary">View Details</button>
+                            <button class="btn secondary">Report Sighting</button>
+                        </div>
+                    </div>
+
+                    <div class="result-card">
+                        <div class="result-photo">
+                            <img src="https://via.placeholder.com/150x150?text=Photo" alt="Missing person">
+                        </div>
+                        <div class="result-details">
+                            <h3>Amit Kumar</h3>
+                            <p><i class="fas fa-user"></i> 14 years, Male</p>
+                            <p><i class="fas fa-map-marker-alt"></i> Lajpat Nagar, Delhi</p>
+                            <p><i class="fas fa-calendar"></i> Missing since Oct 10, 2023</p>
+                            <div class="match-percentage">
+                                <span>78% Match</span>
+                                <div class="progress-bar">
+                                    <div class="progress" style="width: 78%"></div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="result-actions">
+                            <button class="btn primary">View Details</button>
+                            <button class="btn secondary">Report Sighting</button>
+                        </div>
+                    </div>
+
+                    <div class="result-card">
+                        <div class="result-photo">
+                            <img src="https://via.placeholder.com/150x150?text=Photo" alt="Missing person">
+                        </div>
+                        <div class="result-details">
+                            <h3>Vikram Singh</h3>
+                            <p><i class="fas fa-user"></i> 13 years, Male</p>
+                            <p><i class="fas fa-map-marker-alt"></i> Saket, Delhi</p>
+                            <p><i class="fas fa-calendar"></i> Missing since Oct 5, 2023</p>
+                            <div class="match-percentage">
+                                <span>65% Match</span>
+                                <div class="progress-bar">
+                                    <div class="progress" style="width: 65%"></div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="result-actions">
+                            <button class="btn primary">View Details</button>
+                            <button class="btn secondary">Report Sighting</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="report-sighting-section">
+                <div class="sighting-form">
+                    <h2>Report a Sighting</h2>
+                    <p>If you have seen a missing person, please provide details below</p>
+                    
+                    <form id="sightingForm">
+                        <div class="form-group">
+                            <label for="sightingPerson">Missing Person</label>
+                            <select id="sightingPerson" required>
+                                <option value="">Select a person</option>
+                                <option value="rahul">Rahul Sharma</option>
+                                <option value="amit">Amit Kumar</option>
+                                <option value="vikram">Vikram Singh</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="sightingLocation">Location Sighted</label>
+                            <input type="text" id="sightingLocation" placeholder="Enter address or location" required>
+                        </div>
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="sightingDate">Date Sighted</label>
+                                <input type="date" id="sightingDate" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="sightingTime">Time Sighted</label>
+                                <input type="time" id="sightingTime" required>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="sightingDescription">Description</label>
+                            <textarea id="sightingDescription" rows="3" placeholder="Describe what you saw, what the person was wearing, etc."></textarea>
+                        </div>
+                        <div class="form-group">
+                            <label for="sightingContact">Your Contact Information</label>
+                            <input type="text" id="sightingContact" placeholder="Phone number or email" required>
+                        </div>
+                        <div class="form-group checkbox-group">
+                            <input type="checkbox" id="anonymousReport" name="anonymousReport">
+                            <label for="anonymousReport">Report anonymously</label>
+                        </div>
+                        <button type="submit" class="btn primary">Submit Sighting Report</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <div class="copyright">
+                <p>&copy; 2023 BACK HOME. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Tab functionality
+        document.querySelectorAll('.tab-btn').forEach(button => {
+            button.addEventListener('click', function() {
+                // Remove active class from all tabs and contents
+                document.querySelectorAll('.tab-btn').forEach(btn => btn.classList.remove('active'));
+                document.querySelectorAll('.tab-content').forEach(content => content.classList.remove('active'));
+                
+                // Add active class to clicked tab
+                this.classList.add('active');
+                
+                // Show corresponding content
+                const tabId = this.getAttribute('data-tab');
+                document.getElementById(tabId).classList.add('active');
+            });
+        });
+
+        // Photo upload
+        const uploadBox = document.getElementById('uploadBox');
+        const photoUpload = document.getElementById('photoUpload');
+        
+        uploadBox.addEventListener('click', () => {
+            photoUpload.click();
+        });
+        
+        uploadBox.addEventListener('dragover', (e) => {
+            e.preventDefault();
+            uploadBox.classList.add('dragover');
+        });
+        
+        uploadBox.addEventListener('dragleave', () => {
+            uploadBox.classList.remove('dragover');
+        });
+        
+        uploadBox.addEventListener('drop', (e) => {
+            e.preventDefault();
+            uploadBox.classList.remove('dragover');
+            
+            if (e.dataFiles.length) {
+                photoUpload.files = e.dataFiles;
+                previewPhoto(e.dataFiles[0]);
+            }
+        });
+        
+        photoUpload.addEventListener('change', function() {
+            if (this.files && this.files[0]) {
+                previewPhoto(this.files[0]);
+            }
+        });
+        
+        function previewPhoto(file) {
+            const reader = new FileReader();
+            reader.onload = function(e) {
+                uploadBox.style.backgroundImage = `url(${e.target.result})`;
+                uploadBox.style.backgroundSize = 'cover';
+                uploadBox.style.backgroundPosition = 'center';
+                uploadBox.innerHTML = '';
+            }
+            reader.readAsDataURL(file);
+        }
+
+        // Search buttons
+        document.getElementById('searchUploadBtn').addEventListener('click', function() {
+            if (!photoUpload.files.length) {
+                alert('Please upload a photo first');
+                return;
+            }
+            
+            // Show search results
+            document.getElementById('searchResults').style.display = 'block';
+            document.getElementById('searchResults').scrollIntoView({ behavior: 'smooth' });
+        });
+
+        document.getElementById('searchCameraBtn').addEventListener('click', function() {
+            // Show search results
+            document.getElementById('searchResults').style.display = 'block';
+            document.getElementById('searchResults').scrollIntoView({ behavior: 'smooth' });
+        });
+
+        document.getElementById('searchManualBtn').addEventListener('click', function() {
+            // Show search results
+            document.getElementById('searchResults').style.display = 'block';
+            document.getElementById('searchResults').scrollIntoView({ behavior: 'smooth' });
+        });
+
+        // Sighting form submission
+        document.getElementById('sightingForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            // In a real application, this would submit the form data to a server
+            alert('Sighting report submitted successfully! Thank you for your help.');
+            this.reset();
+        });
+    </script>
+</body>
+</html>

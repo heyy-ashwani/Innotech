@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Missing Person Poster - BACK HOME</title>
+    <link rel="stylesheet" href="poster.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <header>
+        <div class="container">
+            <div class="logo">
+                <h1>BACK HOME</h1>
+                <p>Report Share Unite</p>
+            </div>
+            <nav>
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="report.html">Report Missing</a></li>
+                    <li><a href="search.html">Search</a></li>
+                    <li><a href="index.html#about">About</a></li>
+                    <li><a href="index.html#contact">Contact</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <section class="page-header">
+        <div class="container">
+            <h1>Missing Person Poster</h1>
+            <p>Share this poster to help find the missing person</p>
+        </div>
+    </section>
+
+    <section class="poster-view">
+        <div class="container">
+            <div class="poster-container">
+                <div class="poster">
+                    <div class="poster-header">
+                        <h3>MISSING PERSON</h3>
+                    </div>
+                    <div class="poster-body">
+                        <div class="poster-photo">
+                            <img src="SHARMA RAHUL.jpeg" alt="Missing person photo">
+                        </div>
+                        <div class="poster-details">
+                            <h4>Rahul Sharma</h4>
+                            <p>Age: 12 years</p>
+                            <p>Gender: Male</p>
+                            <p>Last Seen: Sungam Vihar, Delhi</p>
+                            <p>Date: October 15, 2023</p>
+                            <p>Clothing: Blue t-shirt, jeans, black shoes</p>
+                        </div>
+                    </div>
+                    <div class="poster-footer">
+                        <div class="qr-code">
+                            <img src="or.jpeg" alt="QR Code">
+                        </div>
+                        <div class="contact-info">
+                            <p>If found, please contact:</p>
+                            <p>Kamlesh Devi: +91 98765 43210</p>
+                            <p>Police: 100 | NGO: +91 12345 67890</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="poster-actions">
+                <h2>Share This Poster</h2>
+                <p>Help spread the word by sharing this poster on social media and messaging platforms</p>
+                
+                <div class="share-buttons">
+                    <a href="#" class="share-btn whatsapp">
+                        <i class="fab fa-whatsapp"></i> WhatsApp
+                    </a>
+                    <a href="#" class="share-btn facebook">
+                        <i class="fab fa-facebook-f"></i> Facebook
+                    </a>
+                    <a href="#" class="share-btn twitter">
+                        <i class="fab fa-twitter"></i> Twitter
+                    </a>
+                    <a href="#" class="share-btn telegram">
+                        <i class="fab fa-telegram-plane"></i> Telegram
+                    </a>
+                </div>
+
+                <div class="download-options">
+                    <h3>Download Options</h3>
+                    <div class="download-buttons">
+                        <button class="btn primary">
+                            <i class="fas fa-file-pdf"></i> Download as PDF
+                        </button>
+                        <button class="btn secondary">
+                            <i class="fas fa-image"></i> Download as Image
+                        </button>
+                    </div>
+                </div>
+
+                <div class="print-option">
+                    <button class="btn secondary">
+                        <i class="fas fa-print"></i> Print Poster
+                    </button>
+                </div>
+            </div>
+
+            <div class="case-info">
+                <h2>Case Information</h2>
+                <div class="case-details">
+                    <div class="case-detail">
+                        <h3>Report ID</h3>
+                        <p>BH-2023-001234</p>
+                    </div>
+                    <div class="case-detail">
+                        <h3>Date Reported</h3>
+                        <p>October 16, 2023</p>
+                    </div>
+                    <div class="case-detail">
+                        <h3>Status</h3>
+                        <p class="status-active">Active</p>
+                    </div>
+                    <div class="case-detail">
+                        <h3>Reported By</h3>
+                        <p>Kamlesh Devi (Mother)</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="next-steps">
+                <h2>What to Do Next</h2>
+                <div class="steps">
+                    <div class="step">
+                        <div class="step-number">1</div>
+                        <div class="step-content">
+                            <h3>Share Widely</h3>
+                            <p>Share this poster on social media, community groups, and with local businesses.</p>
+                        </div>
+                    </div>
+                    <div class="step">
+                        <div class="step-number">2</div>
+                        <div class="step-content">
+                            <h3>Contact Authorities</h3>
+                            <p>Follow up with police and NGOs regularly. Provide any new information.</p>
+                        </div>
+                    </div>
+                    <div class="step">
+                        <div class="step-number">3</div>
+                        <div class="step-content">
+                            <h3>Stay Updated</h3>
+                            <p>Check for possible matches on our platform and report any sightings.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="report-sighting">
+                <h2>Report a Sighting</h2>
+                <p>If you have seen this person or have any information, please report it immediately</p>
+                <a href="search.html" class="btn primary">Report Sighting</a>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <div class="copyright">
+                <p>&copy; 2023 BACK HOME. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Share functionality
+        document.querySelectorAll('.share-btn').forEach(button => {
+            button.addEventListener('click', function(e) {
+                e.preventDefault();
+                const platform = this.classList[1];
+                
+                // In a real application, this would open the share dialog for the specific platform
+                alert(`Sharing on ${platform.charAt(0).toUpperCase() + platform.slice(1)}...`);
+            });
+        });
+
+        // Download functionality
+        document.querySelectorAll('.download-buttons button').forEach(button => {
+            button.addEventListener('click', function() {
+                const format = this.textContent.includes('PDF') ? 'PDF' : 'Image';
+                alert(`Downloading poster as ${format}...`);
+            });
+        });
+
+        // Print functionality
+        document.querySelector('.print-option button').addEventListener('click', function() {
+            alert('Opening print dialog...');
+            // In a real application, this would open the print dialog
+            // window.print();
+        });
+    </script>
+</body>
+</html>
